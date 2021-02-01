@@ -5,6 +5,7 @@ bool binarySearchTree(int arr[], int toFind)
 	int leftEndOfArr = 0, rightEndOfArr = ARRAY_SIZE, middleOfArr;
 	int i, j, tmp;
 
+	// just sorting the array
 	for (i = 0; i < ARRAY_SIZE - 1; i++)
 	{
 		for (j = i + 1; j < ARRAY_SIZE; j++)
@@ -17,6 +18,7 @@ bool binarySearchTree(int arr[], int toFind)
 			}
 		}
 	}
+	// the main part of this function
 	while (leftEndOfArr <= rightEndOfArr)
 	{
 		middleOfArr = (leftEndOfArr + rightEndOfArr) / 2;

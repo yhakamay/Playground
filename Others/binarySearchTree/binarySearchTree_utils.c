@@ -18,7 +18,12 @@ void showArr(int arr[])
 {
 	printf("The array after sorted: {");
 	for (int i = 0; i < ARRAY_SIZE; i++)
-		printf(i == ARRAY_SIZE ? "%d " : "%d", arr[i]);
+	{
+		if (i + 1 != ARRAY_SIZE)
+			printf("%d, ", arr[i]);
+		else
+			printf("%d", arr[i]);
+	}
 	printf("}\n");
 }
 
