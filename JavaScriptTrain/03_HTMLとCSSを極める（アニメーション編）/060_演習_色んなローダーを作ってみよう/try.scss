@@ -1,0 +1,102 @@
+@import "mixin";
+
+.try {
+    .spinner {
+        height: 40px;
+        width: 40px;
+        background-color: #333;
+        margin: 100px auto;
+
+        @include animation(
+            $name: sk-myrotate,
+            $duration: 1200ms,
+            $timing-function: ease-in-out,
+            $iteration-count: infinite
+        );
+    }
+
+    @keyframes sk-myrotate {
+        50% {
+            transform: perspective(120px) rotateX(-180deg);
+        }
+        100% {
+            transform: perspective(120px) rotateX(-180deg) rotateY(-180deg);
+        }
+    }
+
+    .double-spinner {
+        height: 40px;
+        width: 40px;
+        margin: 100px auto;
+        position: relative;
+
+        & > div {
+            height: 100%;
+            width: 100%;
+            background-color: #333;
+            border-radius: 50%;
+            opacity: 0.6;
+            position: absolute;
+
+            @include animation(
+                $name: sk-doublebounce,
+                $duration: 2s,
+                $iteration-count: infinite,
+                $timing-function: ease-in-out
+            );
+
+            &:nth-child(2) {
+                animation-delay: -1s;
+            }
+        }
+    }
+
+    @keyframes sk-doublebounce {
+        0%,
+        100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(0);
+        }
+    }
+
+    .rect-spinner {
+        width: 50px;
+        height: 40px;
+        margin: 100px auto;
+        text-align: center;
+        letter-spacing: -2px;
+
+        & > div {
+            background-color: #333;
+            height: 100%;
+            width: 6px;
+            display: inline-block;
+
+            @include animation(
+                $name: sk-rectwave,
+                $duration: 1200ms,
+                $iteration-count: infinite,
+                $timing-function: ease-in-out
+            );
+
+            @for $i from 1 through 5 {
+                &:nth-child(#{$i}) {
+                    animation-delay: -1300ms + 100ms * $i;
+                }
+            }
+        }
+    }
+
+    @keyframes sk-rectwave {
+        0%,
+        40%,
+        100% {
+            transform: scaleY(0.4);
+        }
+        20% {
+            transform: scaleY(1);
+        }
+    }
+}
